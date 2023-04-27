@@ -89,7 +89,8 @@ const uploadFile = () => {
 
   // upload file
   const xhr = new XMLHttpRequest();
-
+  xhr.open("POST", uploadURL);
+xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
   // listen for upload progress
   xhr.upload.onprogress = function (event) {
     // find the percentage of uploaded
@@ -113,7 +114,7 @@ const uploadFile = () => {
     }
   };
 
-  xhr.open("POST", uploadURL);
+  
   xhr.send(formData);
 };
 
@@ -151,6 +152,7 @@ emailForm.addEventListener("submit", (e) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*" 
     },
     body: JSON.stringify(formData),
   })
