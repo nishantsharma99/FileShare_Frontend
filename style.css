@@ -1,3 +1,9 @@
+form {
+  background-color: darkslategray;
+  color: white;
+  border-radius: 25px;
+}
+
 :root {
   --main-bg-color: #edf5fe;
   --light-blue: #03a9f4;
@@ -192,6 +198,8 @@ body,
   cursor: pointer;
   background: #f5fcff;
 }
+
+
 
 .email-container form {
   border: 2px solid var(--border-color);
