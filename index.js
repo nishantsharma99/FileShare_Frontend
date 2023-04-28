@@ -76,16 +76,12 @@ const uploadFile = () => {
   const formData = new FormData();
   formData.append("myfile", files[0]);
 
-  //show the uploader
   progressContainer.style.display = "block";
 
-  // upload file
   const xhr = new XMLHttpRequest();
   xhr.open("POST", uploadURL);
-xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
-  // listen for upload progress
+  xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
   xhr.upload.onprogress = function (event) {
-    // find the percentage of uploaded
     let percent = Math.round((100 * event.loaded) / event.total);
     progressPercent.innerText = percent;
     const scaleX = `scaleX(${percent / 100})`;
@@ -93,28 +89,25 @@ xhr.setRequestHeader('Access-Control-Allow-Origin', '*')
     progressBar.style.transform = scaleX;
   };
 
-  // handle error
   xhr.upload.onerror = function () {
     showToast(`Error in upload: ${xhr.status}.`);
     fileInput.value = ""; // reset the input
   };
 
-  // listen for response which will give the link
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {
       onFileUploadSuccess(xhr.responseText);
     }
   };
 
-  
+
   xhr.send(formData);
 };
 
 const onFileUploadSuccess = (res) => {
-  fileInput.value = ""; // reset the input
+  fileInput.value = "";
   status.innerText = "Uploaded";
 
-  // remove the disabled attribute from form btn & make text send
   emailForm[2].removeAttribute("disabled");
   emailForm[2].innerText = "Send";
   progressContainer.style.display = "none"; // hide the box
@@ -142,7 +135,7 @@ emailForm.addEventListener("submit", (e) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*" 
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify(formData),
   })
