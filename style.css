@@ -44,7 +44,8 @@ body,
 }
 
 .upload-container {
-  background: #ffffff;
+  background: darkslategray;
+  color: white;
   border-radius: 25px;
   box-shadow: 0px 20px 20px 0px #00000017;
 }
@@ -52,7 +53,7 @@ body,
 .drop-zone {
   width: var(--container-width);
   min-height: 200px;
-  border: 2px dashed var(--border-color);
+  border: 2px dashed #fff;
   border-radius: 10px;
   margin: 30px;
   transition: 0.2s all ease-in;
